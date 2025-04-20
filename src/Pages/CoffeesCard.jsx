@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Card from "./Card";
 
 const CoffeesCard = () => {
-  const coffees = useLoaderData();
-  const {category}= useParams();
+  const data = useLoaderData();
+  const { category } = useParams();
 
-//   console.log();
+  const [coffees, setCoffees] = useState([]);
+
+  useEffect(() => {
+    const filterByCoffees = [...data].filter((coffee) => coffee.category === category);
+    setCoffees(filterByCoffees)
+  }, [category, data]);
+
+  //   console.log();
   return (
-    <div>
-        <h2 className="my-4 border-b">category: {category}</h2>
+    <div className="my-10">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {coffees.map((coffee) => (
           <Card key={coffee.id} coffee={coffee} />
