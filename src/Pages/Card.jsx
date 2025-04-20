@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ coffee }) => {
   const {
     popularity,
     rating,
-    description,
+    id,
     type,
     origin,
     category,
@@ -13,26 +14,37 @@ const Card = ({ coffee }) => {
   } = coffee || {};
 
   return (
-    <div className="card bg-base-100 shadow-xl border border-gray-200">
-      <figure className="h-52 overflow-hidden">
-        <img src={image} alt={name} className="w-full object-cover" />
-      </figure>
-      <div className="card-body space-y-2">
-        <h2 className="card-title text-xl font-bold">{name}</h2>
-        <p className="text-sm text-gray-600">{description?.slice(0, 100)}...</p>
-        <div className="text-sm text-gray-500">
-          <p><span className="font-semibold">Category:</span> {category}</p>
-          <p><span className="font-semibold">Type:</span> {type}</p>
-          <p><span className="font-semibold">Origin:</span> {origin}</p>
+    <div className="flex justify-center items-center p-4">
+      <Link
+        to={`/coffee/${id}`}
+        className="w-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 overflow-hidden"
+      >
+        <figure className="w-full h-48 bg-gray-100">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        </figure>
+        <div className="p-5 space-y-2">
+          <h1 className="text-2xl font-bold text-gray-800">{name}</h1>
+          <p className="text-gray-600">
+            <span className="font-semibold">Category:</span> {category}
+          </p>
+          <p className="text-gray-600">
+            <span className="font-semibold">Type:</span> {type}
+          </p>
+          <p className="text-gray-600">
+            <span className="font-semibold">Origin:</span> {origin}
+          </p>
+          <p className="text-yellow-600 font-semibold">
+            ⭐ Rating: {rating}
+          </p>
+          <p className="text-green-600 font-semibold">
+            🔥 Popularity: {popularity}%
+          </p>
         </div>
-        <div className="flex justify-between items-center text-sm font-medium mt-2">
-          <p>⭐ {rating}</p>
-          <p>🔥 {popularity} popularity</p>
-        </div>
-        <div className="card-actions justify-end">
-          <button className="btn btn-sm btn-primary">Details</button>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };

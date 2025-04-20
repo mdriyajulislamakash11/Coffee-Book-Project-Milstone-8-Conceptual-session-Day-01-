@@ -6,14 +6,20 @@ const Categories = ({ categories }) => {
     <div className="w-full px-4">
       <div
         role="tablist"
-        className="tabs tabs-lifted w-full flex flex-wrap justify-center "
+        className="tabs tabs-lifted w-full flex flex-wrap justify-center"
       >
         {categories.map((category) => (
           <NavLink
             key={category.id}
             to={`category/${category.category}`}
             role="tab"
-            className="tab flex-1 text-center text-lg font-semibold"
+            className={({ isActive }) =>
+              `tab flex-1 text-center text-lg font-semibold ${
+                isActive
+                  ? "tab-active bg-primary text-white"
+                  : "text-gray-600"
+              }`
+            }
           >
             {category.category}
           </NavLink>
