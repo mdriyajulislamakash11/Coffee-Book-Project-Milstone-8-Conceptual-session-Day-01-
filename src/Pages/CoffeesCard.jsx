@@ -9,8 +9,13 @@ const CoffeesCard = () => {
   const [coffees, setCoffees] = useState([]);
 
   useEffect(() => {
-    const filterByCoffees = [...data].filter((coffee) => coffee.category === category);
-    setCoffees(filterByCoffees)
+    if(category){
+        const filterByCoffees = [...data].filter(
+            (coffee) => coffee.category === category
+          );
+          setCoffees(filterByCoffees);
+    }
+    setCoffees(data)
   }, [category, data]);
 
   //   console.log();
