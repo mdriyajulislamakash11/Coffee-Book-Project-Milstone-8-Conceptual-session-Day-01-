@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* ei code dara amra side er scrol bar uotput side a je scrol tale seta sorano */
 html{
     overflow-y:  scroll;
 }
