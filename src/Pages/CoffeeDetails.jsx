@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToLocalStorage, getCoffeeCart } from "../utils/LocalStorage";
 
 const CoffeeDetails = () => {
   const { id } = useParams();
   const data = useLoaderData();
   const [coffee, setCoffee] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const find = data.find((coffee) => coffee.id == id);
     setCoffee(find);
+
+    const favorite = getCoffeeCart();
+    const isExist = favorite.find((item) => item.id == find.id);
+    if (isExist) {
+      setIsFavorite(true);
+    }
   }, [data, id]);
 
   const {
@@ -21,6 +29,11 @@ const CoffeeDetails = () => {
     image,
     name,
   } = coffee || {};
+
+  const handleFavorite = (coffee) => {
+    addToLocalStorage(coffee);
+    setIsFavorite(true);
+  };
 
   return (
     <div className="my-14 flex justify-center items-center px-4">
@@ -42,7 +55,13 @@ const CoffeeDetails = () => {
               <p className="text-base">Rating: {rating}</p>
             </div>
             <div>
-              <button className="btn btn-warning">Add Favorite</button>
+              <button
+                disabled={isFavorite}
+                onClick={() => handleFavorite(coffee)}
+                className="btn btn-warning"
+              >
+                Add Favorite
+              </button>
             </div>
           </div>
 
@@ -74,7 +93,6 @@ const CoffeeDetails = () => {
             <h2 className="text-xl font-semibold mb-2">Nutrition Info</h2>
             {/* <p>{nutrition_info || "No nutrition info available."}</p> */}
           </div>
-
         </div>
       ) : (
         <p className="text-center text-xl text-gray-500">
