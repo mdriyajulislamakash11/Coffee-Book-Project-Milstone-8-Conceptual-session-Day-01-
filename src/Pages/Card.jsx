@@ -2,11 +2,13 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaTrashCan } from "react-icons/fa6";
 
-const Card = ({ coffee, handleDelete }) => {
+const Card = ({ coffee, handleRemoved }) => {
   const { pathname } = useLocation();
 
   const { popularity, rating, id, type, origin, category, image, name } =
     coffee || {};
+
+    
 
   return (
     <div className="relative flex justify-center items-center p-4">
@@ -37,7 +39,7 @@ const Card = ({ coffee, handleDelete }) => {
 
       {pathname === "/dashboard" && (
         <button
-          onClick={() => handleDelete(id)}
+          onClick={() => handleRemoved(id)}
           className="absolute top-2 right-2 btn btn-warning text-white  p-3 rounded-full shadow hover:bg-red-600 transition"
         >
           <FaTrashCan />

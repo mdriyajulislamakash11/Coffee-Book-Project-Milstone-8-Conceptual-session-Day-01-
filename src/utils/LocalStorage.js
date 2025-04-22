@@ -31,4 +31,12 @@ const addToLocalStorage = (coffee) => {
 
 // Remove LocalStorage
 
-export {addToLocalStorage, getCoffeeCart}
+const removeFavorite = (id) => {
+    const favorite = getCoffeeCart();
+
+    const reminiing = favorite.filter((item) => item.id !== id);
+    localStorage.setItem("favorite", JSON.stringify(reminiing))
+    toast.success('Successfully removed!');
+}
+
+export {addToLocalStorage, getCoffeeCart, removeFavorite}
