@@ -1,12 +1,46 @@
-# React + Vite
+# ☕ Coffee Lover - A Coffee Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: [Click to Visit](https://glittery-cannoli-98cc64.netlify.app/)
 
-Currently, two official plugins are available:
+## 🚀 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Coffee Lover** is a sleek and responsive web application built with React that allows users to explore various coffee types, their ratings, origins, and more. Admins can also manage the coffee list through the dashboard.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+### ✅ Home Page
+- Coffee cards with image, name, category, type, origin, rating, and popularity.
+- Responsive card design with hover effect.
+- Click on a card to see full details.
+
+### ✅ Coffee Detail Page
+- Displays full details of the selected coffee.
+- Dynamic routing using React Router.
+  
+### ✅ Dashboard Page
+- Lists all added coffees.
+- Includes a `Delete` button to remove coffee (visible only in `/dashboard`).
+- Dynamic UI based on route (e.g. Delete button shows only on dashboard).
+
+### ✅ Routing
+- React Router DOM is used to handle multiple routes like:
+  - `/` for Home
+  - `/coffee/:id` for Coffee Details
+  - `/dashboard` for Admin View
+
+---
+
+## 🔧 Technologies Used
+
+- **React** (Functional Components)
+- **React Router DOM**
+- **Tailwind CSS** for modern styling
+- **Custom CSS utility classes**
+- **Netlify** for deployment
+
+---
+
+## 📁 Folder Structure
+
